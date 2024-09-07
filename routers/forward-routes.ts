@@ -1,7 +1,5 @@
 // deno-lint-ignore-file no-explicit-any
-import { Request } from "jsr:@oak/oak/request";
-import { Response } from "jsr:@oak/oak/response";
-import { Router } from "jsr:@oak/oak/router";
+import { Router, Request, Response } from "https://deno.land/x/oak@v17.0.0/mod.ts";
 
 const router: Router = new Router();
 
@@ -29,7 +27,7 @@ router.post(
   async ({ request, response }: { request: Request; response: Response }) => {
     try {
       const url = request.url.searchParams.get("url") as string;
-      if (!url) {        
+      if (!url) {
         throw new Error("No url provided");
       }
       const body = JSON.stringify(request.body);
@@ -40,7 +38,7 @@ router.post(
           "X-Requested-With": "XMLHttpRequest",
         },
       });
-      return response.body = await result.json();
+      return (response.body = await result.json());
     } catch (err: any) {
       throw err;
     }
