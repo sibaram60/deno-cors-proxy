@@ -5,7 +5,6 @@ const router: Router = new Router();
 
 router.get('/', ({ response }: { response: Response }) => {
 	try {
-		response.headers.append('Access-Control-Allow-Origin', '*');
 		response.body = 'Hello!, This is Cors proxy service. this adds Cors headers to requests';
 	} catch (err) {
 		throw err;
@@ -22,7 +21,6 @@ router.get('/forward', async ({ request, response }: { request: Request; respons
 			method: 'GET',
 			headers: { 'X-Requested-With': 'XMLHttpRequest' },
 		});
-		response.headers.append('Access-Control-Allow-Origin', '*');
 		response.body = await result.json();
 	} catch (err) {
 		throw err;
@@ -43,7 +41,6 @@ router.post('/forward', async ({ request, response }: { request: Request; respon
 				'X-Requested-With': 'XMLHttpRequest',
 			},
 		});
-		response.headers.append('Access-Control-Allow-Origin', '*');
 		return (response.body = await result.json());
 	} catch (err: any) {
 		throw err;
@@ -64,7 +61,6 @@ router.patch('/forward', async ({ request, response }: { request: Request; respo
 				'X-Requested-With': 'XMLHttpRequest',
 			},
 		});
-		response.headers.append('Access-Control-Allow-Origin', '*');
 		response.body = await result.json();
 	} catch (err: any) {
 		throw err;
@@ -85,7 +81,6 @@ router.delete('/forward', async ({ request, response }: { request: Request; resp
 				'X-Requested-With': 'XMLHttpRequest',
 			},
 		});
-		response.headers.append('Access-Control-Allow-Origin', '*');
 		response.body = await result.json();
 	} catch (err: any) {
 		throw err;
@@ -106,7 +101,6 @@ router.put('/forward', async ({ request, response }: { request: Request; respons
 				'X-Requested-With': 'XMLHttpRequest',
 			},
 		});
-		response.headers.append('Access-Control-Allow-Origin', '*');
 		response.body = await result.json();
 	} catch (err: any) {
 		throw err;
